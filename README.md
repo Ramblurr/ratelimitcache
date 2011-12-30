@@ -10,21 +10,21 @@ More information (for the original django version) at http://simonwillison.net/2
 
 Installation:
 
-    Place the ratelimitcache.py on your Python path.
-
-    Configure your cache settings. For best results, use the memcached
-    backend - the other backends do not provide an atomic counter increment
-    and so may suffer from less effective limiting due to race conditions.
-
-    Cache documentation: [http://werkzeug.pocoo.org/docs/contrib/cache/][fc]
+* Place the ratelimitcache.py on your Python path.
+* Configure your cache settings. For best results, use the memcached
+backend - the other backends do not provide an atomic counter increment
+and so may suffer from less effective limiting due to race conditions.
+* Cache documentation: [http://werkzeug.pocoo.org/docs/contrib/cache/][fc]
 
 Demo:
+
     cd demo/
     python hello.py
 
-    Now browse to:
-        http://localhost:5000
-        http://localhost:5000/api/minute
+Now browse to:
+
+    http://localhost:5000
+    http://localhost:5000/api/minute
 
 Basic usage (max 20 requests every 3 minutes):
 
@@ -52,6 +52,7 @@ pass the internal `cache` object:
         return render_template( ... )
 
 Protecting a login form, i.e rate limit on IP address and attempted username:
+
 **This example is for django** (TODO: port to flask)
 
     from ratelimitcache import ratelimit_post
@@ -62,6 +63,7 @@ Protecting a login form, i.e rate limit on IP address and attempted username:
         return HttpResponse('...')
 
 Custom behaviour, e.g. logging when the rate limit condition fails:
+
 **This example is for django** (TODO: port to flask)
 
     from ratelimitcache import ratelimit
